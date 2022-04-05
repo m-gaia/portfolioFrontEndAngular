@@ -1,0 +1,173 @@
+<!-- BARRA DE NAVEGACION -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="row">
+      <a class="navbar-brand d-inline-block" href="#">
+        <img
+          src="assets/images/ag3.png"
+          alt="logo"
+          height="30"
+          width="30"
+          class="d-inline-block align-top rounded-circle"
+        />
+        <h6 class="mx-2 d-inline-block">
+          ARGENTINA PROGRAMA<small class="text-muted">| #YoProgramo</small>
+        </h6>
+      </a>
+    </div>
+    <div class="row justify-content-right mx-1">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarsExample05"
+        aria-controls="navbarsExample05"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase py-1">
+          <li class="nav-item dropdown py-1">
+            <a class="nav-link" aria-current="page" href="#"
+              ><i class="fab fa-github fa-2x"></i
+            ></a>
+          </li>
+          <li class="nav-item active py-1">
+            <a class="nav-link" aria-current="page" href="#"
+              ><i class="fab fa-linkedin fa-2x"></i
+            ></a>
+          </li>
+          <li class="nav-item py-1">
+            <a class="nav-link" href="#"
+              ><i class="fab fa-instagram-square fa-2x"></i
+            ></a>
+          </li>
+          <li class="nav-item py-1">
+            <a class="nav-link" href="#"
+              ><i class="fab fa-twitter-square fa-2x"></i
+            ></a>
+          </li>
+        </ul>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-dark bg-secondary text-white py-1 my-1 mx-2 rounded-pill border-2 text-uppercase"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-bs-whatever="@getbootstrap"
+        >
+          <strong>LOGIN</strong>
+        </button>
+      </div>
+      <!-- nav-bar/ collapse -->
+    </div>
+    <!-- div/ row -->
+  </div>
+  <!-- div/ container-fluid -->
+</nav>
+
+<!-- COMPONENTE ENCABEZADO -->
+
+<app-encabezado></app-encabezado>
+
+<!-- COMPONENTE ACERCA DE -->
+
+<app-acerca-de></app-acerca-de>
+
+<!-- COMPONENTE EXPERIENCIA Y EDUCACION -->
+
+<app-experiencia-educacion></app-experiencia-educacion>
+
+<!-- COMPONENTE HABILIDADES -->
+
+<app-habilidades></app-habilidades>
+
+<!-- COMPONENTE PROYECTOS -->
+
+<app-proyectos></app-proyectos>
+
+<!-- FOOTER -->
+
+<div class="bg-dark">
+  <div class="container-fluid">
+    <div class="row justify-content-left">
+      <div class="col-lg-6 py-2">
+        <div class="text-white fs-6 navbar-brand d-inline-block">
+          © 2021 Copyright |
+          <a
+            class="text-white text-decoration-none fs-6"
+            href="https://mdbootstrap.com/"
+            >m-gaia.com</a
+          >
+        </div>
+        <div class="col-lg-6 py-2">
+          <a href="#"><i class="bi bi-github"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-dark bg-primary py-1 my-3 mx-0 rounded-pill border-2 text-uppercase text-white"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap"
+          >
+            <strong>Contactame</strong>
+          </button>
+        </div>
+      </div>
+      <!-- div/ row -->
+    </div>
+    <!-- div/ container -->
+  </div>
+
+  <!-- VENTANA MODAL: Contactame -->
+
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"
+                >Recipient:</label
+              >
+              <input type="text" class="form-control" id="recipient-name" />
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

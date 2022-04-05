@@ -1,0 +1,78 @@
+<div class="container-fluid card rounded-start mb-3 py-3">
+  <div class="row">
+    <div class="d-grid gap-2 col-lg-12 my-3 mx-auto py-3">
+      <div class="edit-btn">
+        <a href="#" class="right-btn"><i class="fas fa-plus"></i></a>
+      </div>
+      <div id="experience" class="card-header">
+        <div class="card-titles">
+          <h2 class="text-uppercase">Experiencia</h2>
+        </div>
+      </div>
+      <div>
+        <ul class="items-list">
+          <li *ngFor="let experiencia of experienciaList">
+            <div class="data-control float-end">
+              <div class="edit-btn">
+                <a href="#" class="right-btn"><i class="fas fa-edit"></i></a>
+                <a href="#" class="right-btn"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </div>
+            </div>
+            <div class="data-container">
+              <a href="#">
+                <div class="logo-container">
+                  <img src="" alt="" />
+                </div>
+                <div class="list-info">
+                  <div>
+                    <h3>{{experiencia.position}}</h3>
+                    <h4>{{experiencia.company}}</h4>
+                    <p>{{experiencia.functions}}</p>
+                    <p><time>{{experiencia.start}}</time>-<time>{{experiencia.end}}</time></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-lg-12 mx-auto" id="aboutme">
+      <div class="edit-btn">
+        <a href="#" class="right-btn"><i class="fas fa-plus"></i></a>
+      </div>
+      <div id="education" class="card-header">
+        <div class="card-titles">
+          <h2 class="text-uppercase">Educación</h2>
+        </div>
+      </div>
+      <ul class="items-list">
+        <li *ngFor="let educacion of educacionList">
+          <div class="data-control float-end">
+            <div class="edit-btn">
+              <a href="#" class="right-btn"><i class="fas fa-edit"></i></a>
+              <a href="#" class="right-btn"><i class="fas fa-trash-alt"></i></a>
+            </div>
+          </div>
+          <div class="data-container">
+            <a href="#" class="txt-decoration">
+              <div class="logo-container">
+                <img src="" alt="" />
+              </div>
+              <div class="list-info">
+                <div>
+                  <h3>{{educacion.title}}</h3>
+                  <h4>{{educacion.career}}</h4>
+                  <p>{{educacion.school}}</p>
+                  <p><time>{{educacion.start}}</time>-<time>{{educacion.end}}</time></p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

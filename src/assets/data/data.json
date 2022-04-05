@@ -1,0 +1,86 @@
+{
+    "name": "Marianela Gaia",
+    "backImage": "#",
+    "image": "#",
+    "position": "Fullstack Developer Junior",
+    "company": {
+        "name": "Argentina Programa",
+        "img": "#",
+        "url": "#"
+    },
+    "school": {
+        "name": "Codo a codo 4.0",
+        "img": "#",
+        "url": "#"
+    },
+    "ubication": "Mendoza (Argentina)",
+    "about": "En segunda etapa #YoProgramo - Full Stack Developer — Diplomado en Inteligencia de Datos - FCE UNCuyo / Data Analytics. Mi meta es desarrollarme profesionalmente con un marcado perfil en competencias digitales, siendo esto lo que más disfruto.",
+    "experience": [{
+        "position": "FREELANCER",
+        "company": "Desarrollo Web",
+        "img": "#",
+        "functions": "Front-End Junior (HTML5 - CSS3 - JS)",
+        "start": "mar 2020",
+        "end": "actualidad",
+        "timeElapsed": "1 año y 8 meses"
+    },
+    {
+        "position": "ANALISTA DE SINIESTROS",
+        "company": "Triunfo Cooperativa de Seguros LTDA",
+        "img": "#",
+        "functions": "Resolver consultas y reclamos de clientes o partes interesadas. Analizar y realizar estadísticas de Atención de CRM y software de BI",
+        "start": "sep 2017",
+        "end": "actualidad",
+        "timeElapsed": "5 años"
+    },
+    {
+        "position": "INVESTIGADOR",
+        "company": "Universidad Nacional de Cuyo",
+        "img": "#",
+        "functions": "Participar en proyectos del Laboratorio de Ciencia de Datos (LACID) - Adcripción a Tecnología de la Información",
+        "start": "2020",
+        "end": "2021",
+        "timeElapsed": "1 año"
+    }],
+    "education": [{
+        "school": "Universidad Nacional de Cuyo",
+        "title": "Grado",
+        "img": "#",
+        "career": "Licenciatura en Administración",
+        "start": "mar 2009",
+        "end": "mar 2016",
+        "timeElapsed": "4 años y 8 meses"
+    },
+    {
+        "school": "Universidad Nacional de Cuyo",
+        "title": "Posgrado",
+        "img": "#",
+        "career": "Diplomatura en Inteligencia de Datos en la Gestión de las Organizaciones",
+        "start": "2020",
+        "end": "2021",
+        "timeElapsed": "1 año"
+    },
+    {
+        "school": "Programa Codo a Codo 4.0. - BA.",
+        "title": "Curso",
+        "img": "#",
+        "career": "Full Stack Python",
+        "start": "2021",
+        "end": "2021",
+        "timeElapsed": "1 año"
+    },
+    {
+        "school": "Living the Web",
+        "title": "Curso",
+        "img": "#",
+        "career": "Desarrollo Web Inicial",
+        "start": "2020",
+        "end": "2020",
+        "timeElapsed": "1 año"
+    }]
+
+
+
+
+
+}

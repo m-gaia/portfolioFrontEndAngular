@@ -1,0 +1,244 @@
+﻿-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema portfolio
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema portfolio
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `portfolio` DEFAULT CHARACTER SET utf8 ;
+USE `portfolio` ;
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`persona`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`persona` (
+  `id` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `apellido` VARCHAR(45) NULL,
+  `personacol` VARCHAR(45) NULL,
+  `personacol1` VARCHAR(45) NULL,
+  `fechaNac` DATE NULL,
+  `telefono` VARCHAR(12) NULL,
+  `acercaDe` VARCHAR(200) NULL,
+  `url_foto_persona` VARCHAR(200) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`usuario` (
+  `id` INT NOT NULL,
+  `nombreUsuario` VARCHAR(45) NULL,
+  `contraseña` VARCHAR(45) NULL,
+  `persona_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `persona_id`),
+  CONSTRAINT `fk_usuario_persona1`
+    FOREIGN KEY (`persona_id`)
+    REFERENCES `portfolio`.`persona` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`tipo_empleo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`tipo_empleo` (
+  `id` INT NOT NULL,
+  `nombreEmpleo` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`experiencia_laboral`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`experiencia_laboral` (
+  `id` INT NOT NULL,
+  `url_foto_empresa` VARCHAR(200) NULL,
+  `nombreEmpresa` VARCHAR(45) NULL,
+  `puesto` VARCHAR(45) NULL,
+  `es_trabajo_actual` TINYINT NULL,
+  `fechaInicio_experiencia` DATE NULL,
+  `fechaFin_experiencia` DATE NULL,
+  `descripcionExperiencia` VARCHAR(200) NULL,
+  `usuario_id` INT NOT NULL,
+  `tipo_empleo_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuario_id`, `tipo_empleo_id`),
+  CONSTRAINT `fk_experiencia_laboral_usuario1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `portfolio`.`usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_experiencia_laboral_tipo_empleo1`
+    FOREIGN KEY (`tipo_empleo_id`)
+    REFERENCES `portfolio`.`tipo_empleo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`educacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`educacion` (
+  `id` INT NOT NULL,
+  `url_foto_instituto` VARCHAR(200) NULL,
+  `nombreInstituto` VARCHAR(45) NULL,
+  `carrera` VARCHAR(45) NULL,
+  `fechaInicio_educacion` DATE NULL,
+  `fechaFin_educacion` DATE NULL,
+  `usuario_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuario_id`),
+  CONSTRAINT `fk_educacion_usuario1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `portfolio`.`usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`proyecto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`proyecto` (
+  `id` INT NOT NULL,
+  `url_foto_proyecto` VARCHAR(200) NULL,
+  `nombreProyecto` VARCHAR(45) NULL,
+  `periodoRealizacion` VARCHAR(45) NULL,
+  `descripcionProyecto` VARCHAR(200) NULL,
+  `urlProyecto` VARCHAR(200) NULL,
+  `usuario_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuario_id`),
+  CONSTRAINT `fk_proyecto_usuario1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `portfolio`.`usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`tipo_nivel`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`tipo_nivel` (
+  `id` INT NOT NULL,
+  `nombreNivel` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`habilidad`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`habilidad` (
+  `id` INT NOT NULL,
+  `url_foto_habilidad` VARCHAR(200) NULL,
+  `nombreHabilidad` VARCHAR(45) NULL,
+  `usuario_id` INT NOT NULL,
+  `tipo_nivel_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuario_id`, `tipo_nivel_id`),
+  CONSTRAINT `fk_habilidad_usuario`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `portfolio`.`usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_habilidad_tipo_nivel1`
+    FOREIGN KEY (`tipo_nivel_id`)
+    REFERENCES `portfolio`.`tipo_nivel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`tecnologia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`tecnologia` (
+  `id` INT NOT NULL,
+  `url_foto_tecnologia` VARCHAR(200) NULL,
+  `nombreTecnologia` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`provincia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`provincia` (
+  `id` INT NOT NULL,
+  `nombreProvincia` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`localidad`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`localidad` (
+  `id` INT NOT NULL,
+  `nombreLocalidad` VARCHAR(45) NULL,
+  `provincia_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `provincia_id`),
+  CONSTRAINT `fk_localidad_provincia1`
+    FOREIGN KEY (`provincia_id`)
+    REFERENCES `portfolio`.`provincia` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`domicilio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`domicilio` (
+  `id` INT NOT NULL,
+  `nombreDomicilio` VARCHAR(45) NULL,
+  `persona_id` INT NOT NULL,
+  `localidad_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `persona_id`, `localidad_id`),
+  CONSTRAINT `fk_domicilio_persona1`
+    FOREIGN KEY (`persona_id`)
+    REFERENCES `portfolio`.`persona` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_domicilio_localidad1`
+    FOREIGN KEY (`localidad_id`)
+    REFERENCES `portfolio`.`localidad` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `portfolio`.`proyecto_tiene_tecnologia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `portfolio`.`proyecto_tiene_tecnologia` (
+  `proyecto_id` INT NOT NULL,
+  `proyecto_usuario_id` INT NOT NULL,
+  `tecnologia_id` INT NOT NULL,
+  PRIMARY KEY (`proyecto_id`, `proyecto_usuario_id`, `tecnologia_id`),
+  CONSTRAINT `fk_proyecto_has_tecnologia_proyecto1`
+    FOREIGN KEY (`proyecto_id` , `proyecto_usuario_id`)
+    REFERENCES `portfolio`.`proyecto` (`id` , `usuario_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_proyecto_has_tecnologia_tecnologia1`
+    FOREIGN KEY (`tecnologia_id`)
+    REFERENCES `portfolio`.`tecnologia` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
